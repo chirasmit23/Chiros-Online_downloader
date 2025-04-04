@@ -162,7 +162,7 @@ def video_downloader():
     else:
         return jsonify({"error": "Could not download the video"}), 500
 @app.route("/instagram", methods=["GET", "POST"])
-def instagram_downloader():
+def photo_downloader():
     if request.method == "GET":
         return render_template("instagram_downloader.html")
     client_ip = request.remote_addr
@@ -186,5 +186,5 @@ def instagram_downloader():
         return jsonify({"error": "Could not download the image"}), 500
     
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT",1000))
+    port = int(os.environ.get("PORT",10000))
     app.run(host="0.0.0.0", port=port, debug=True)
