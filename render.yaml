@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: no-22
+    name: Chiros-Online_downloader
     runtime: python
     buildCommand: |
       apt-get update && apt-get install -y \
