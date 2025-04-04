@@ -1,0 +1,252 @@
+/* Background */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: #72007E; /* Dark purple background */
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+/* Title */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #C0FF00; /* Neon green */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #333333;
+}
+
+/* Downloader Container */
+.downloader-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #D291BC; /* Light pinkish-purple */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: black;
+}
+
+.button-top-left {
+    position: absolute;
+    top: 10px; /* Aligns to top */
+    left: 10px; /* Aligns to left */
+    background: blue;
+    color: green;
+    border: none;
+    padding: 8px 20px; /* Adjust padding for a rectangular look */
+    font-size: 16px;
+    border-radius: 8px; /* Slightly rounded corners */
+    cursor: pointer;
+    transition: 0.3s;
+    width: auto; /* Keeps it compact */
+    text-align: center;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 5px auto;
+    border: 3px solid #B300B3;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+input:focus {
+    border-color: #962fbf;
+}
+
+/* Download Button */
+button:hover {
+    background: darkblue;
+}
+
+/* Footer */
+.footer-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFD700; /* Gold */
+    margin-top: 20px;
+}
+
+button:contains(' Photos Downloader') {
+    display: none;
+}
+
+.form-container {
+    max-width: 600px; /* Reduce the width */
+    margin: 30px auto; /* Center the form */
+    padding: 20px; /* Add padding */
+    background: hsl(320, 42%, 70%); /* Light pinkish-purple background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.form-container input {
+    width: 100%; /* Adjust input width */
+    padding: 8px;
+    margin: 10px auto;
+    border: 2px solid #B300B3;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.form-container button {
+    background-color: blue;
+    color: white;
+    padding: 8px 16px; /* Reduce button size */
+    font-size: 14px; /* Smaller text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    background-color: darkblue;
+}
+
+.card {
+    max-width: 600px; /* Reduce the card width */
+    margin: auto; /* Center the card */
+    background-color: plum !important;
+    padding: 30px; /* Reduce padding */
+    border-radius: 10px; /* Slightly rounded corners */
+   
+    text-align: center;
+}
+
+/* Input Fields */
+/* Ensure both input fields have the same width */
+.card input, 
+.card select {
+    width: 90%;
+    
+    padding: 10px;
+    margin: 8px auto;
+    border: 2px solid #B300B3;
+    border-radius: 20px; /* Keep rounded corners */
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    display: block;
+}
+
+/* Download Button */
+.card button {
+    background-color: blue;
+    color: white;
+    padding: 8px 16px;
+    font-size: 13px;
+    border: none;
+    border-radius: 70px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background-color: darkblue;
+}
+
+#postDownloaderButton {
+    background-color:yellow !important; /* Change to your desired color */
+    color: black !important;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    top: 22px; /* Aligns to top */
+    left: 11px; /* Aligns to left */
+}
+
+#postDownloaderButton:hover {
+    background-color:yellow !important; /* Darker shade when hovered */
+}
+@media (max-width: 768px) {
+    .card {
+        max-width: 80%;
+        padding: 20px;
+    }
+}
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: darkblue;
+}
+
+.btn-secondary {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-field, .select-field {
+    width: 100%; /* Ensure both take full width */
+    max-width: 600px; /* Set a consistent maximum width */
+    padding: 12px;
+    border: 2px solid purple;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    box-sizing: border-box;
+}
+.popup {
+    position: fixed;
+    top: 27%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:rgba(255, 255, 0, 0.52);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    text-align: center;
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+

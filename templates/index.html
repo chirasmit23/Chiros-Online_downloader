@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiros-All Video Downloader</title> 
+    <link rel="stylesheet" href="static/style.css">
+
+    <style>
+        body {
+            background-color: rgba(255, 0, 0, 0.91) !important;
+        }
+        .card {
+            background-color: plum !important;
+        }
+        .chiros-style {
+            color: chartreuse;
+            font-size: 4em;
+            font-weight: bold;
+            font-family: 'elegant', Elegant;
+            text-align: center;
+        }
+        .thank-you {
+            color: yellow;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            animation: blink 1.5s infinite alternate;
+        }
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+        .text-center h1, .text-center h6 {
+            color: black;
+        }
+        .custom-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: auto;
+        }
+        .no-underline {
+            text-decoration: none;
+        }
+        .btn-secondary {
+            background-color: rgba(0, 128, 0, 0.431);
+            font-size: 1.1em;
+            padding: 10px 70px;
+            border-radius: 10px;
+            color: white;
+        }
+        .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+            background-color: rgba(0, 128, 0, 0.6);
+            color: white;
+        }
+
+        .popup {
+            position: fixed;
+            top: 27px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: green;
+            color: white;
+            padding: 13px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+        }
+
+        .popup.failed {
+            background-color:rgba(165, 42, 42, 0.912);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/instagram" id="postDownloaderButton" class="btn btn-secondary no-underline">All Post Downloader</a>
+    </nav>
+    <div class="container mt-5"> <div style="height: 7px;"></div>
+        <h2 class="chiros-style">chiros</h2>
+        <div style="height: 1px;"></div>
+        <h1 class="text-center">All Videos Downloader</h1>
+        <div style="height: 45px;"></div>
+        <div class="card p-4 shadow">
+            <form action="/video" method="post" id="videoForm">
+                <div class="mb-3">
+                    <label for="url" class="form-label">Enter Video URL:</label>
+                    <input type="text" name="url" class="form-control" required placeholder="Paste video URL here...">
+                </div>
+                
+                <!-- Video Quality Selection -->
+                <div class="mb-3">
+                    <label for="quality" class="form-label mt-3">Select Video Quality:</label>
+                    <select name="quality" class="form-control">
+                        <option value="best">Best Available</option>
+                        <option value="1080">1080p</option>
+                        <option value="720">720p</option>
+                        <option value="480">480p</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 w-100" style="background-color: blue;">Download</button>
+            </form>
+        </div>
+    </div>
+    <div style="height: 50px;"></div> <!-- Adds 50px gap -->
+    <div style="height: 55px;"></div> <!-- Adds 55px gap -->
+<h4 class="text-center">Here you can download most of the online platforms video like-Instagram Youtube,Facebook,Dailymotion,X etc
+<div style="height: 67px;"></div>
+<h2 class="thank-you">Thanks for visiting chiros - created by Chirasmit</h2>
+    
+
+    <div id="popupMessage" class="popup"></div>
+
+    <script>
+        // Display a popup message after download attempt
+        function showPopup(message, isSuccess = true) {
+            const popup = document.getElementById("popupMessage");
+            popup.textContent = message;
+            popup.classList.remove("failed");
+            if (!isSuccess) popup.classList.add("failed");
+            popup.style.display = "block";
+    
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000); // Hide after 3 seconds
+        }
+    
+        // Handle form submission
+        document.getElementById("videoForm").onsubmit = function(e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            const formData = new FormData(this);
+    
+            fetch("/video", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Download failed");
+    
+                return response.blob(); // Convert response to file blob
+            })
+            .then(blob => {
+                // Create a download link and trigger it
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "video.mp4"; // Set the filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+    
+                showPopup("Download Complete!", true);
+    
+                // Reload after 2 seconds to fix UI issues
+                setTimeout(() => window.location.reload(), 2000);
+            })
+            .catch(() => {
+                showPopup("Download Failed!", false);
+            });
+        };
+    </script>
+    </body>
+    </html>
+    

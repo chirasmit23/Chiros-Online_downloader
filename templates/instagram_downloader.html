@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiros-All Video Downloader</title>
+    <link rel="stylesheet" href="static/style.css">
+   
+
+    <style>
+        body {
+            background-color: red !important;
+        }
+        .card {
+            background-color: plum !important;
+        }
+        .chiros-style {
+            color: chartreuse;
+            font-size: 4em;
+            font-weight: bold;
+            font-family: 'elegant', Elegant;
+            text-align: center;
+        }
+        .thank-you {
+            color: yellow;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            animation: blink 1.5s infinite alternate;
+        }
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+        .text-center h1, .text-center h6 {
+            color: black;
+        }
+
+        /* Popup styles */
+        .popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color:green;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+        }
+        .popup.failed {
+            background-color: rgba(165, 42, 42, 0.942);
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <button id="postDownloaderButton">Photos Downloader</button>
+    </nav>
+    <div class="container">
+       
+    </div>
+<style>
+    #postDownloaderButton {
+            display: none;
+    }
+    .popup {
+            position: fixed;
+            top: 27px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 0, 0.52);
+            color: white;
+            padding: 13px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+        }
+
+        .popup.failed {
+            background-color: red;
+        }
+    .custom-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        margin: auto;
+        
+    }
+    .no-underline {
+        text-decoration: none;
+    }
+    .btn-secondary {
+        background-color: rgba(0, 128, 0, 0.431);
+        font-size: 1.1em;
+        padding: 10px 70px;
+        border-radius: 10px;
+        color: white;
+    }
+    .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+        background-color: rgba(0, 128, 0, 0.6);
+        color: white;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="chiros-style">chiros</h2>
+    <div style="height: 1px;"></div>
+    <h1 class="text-center"> Photos Downloader</h1>
+    <div style="height: 40px;"></div>
+    <div class="card p-4 shadow custom-card">
+        <!-- 🔙 Back Button to All Videos Downloader -->
+        <a href="/" class="btn btn-secondary mb-3 no-underline">🔙 Back Button to All Videos Downloader</a>
+        
+        <div style="height: 20px;"></div>
+        <form action="/instagram" method="post" id="instagramform">
+            
+            <label for="username"> Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Paste User-id here...">
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Paste password here...">
+        
+            <label for="url">Enter Photos URL:</label>
+            <input type="text" id="url" name="url" required placeholder="Paste Photos URL here...">
+        
+            <button type="submit" style="background-color: blue;">Download</button>
+        </form>
+    </div>
+</div>
+
+<div style="height: 60px;"></div> <!-- Adds 65px gap -->
+<h4 class="text-center">In case of Facebook post download, no need to login via username or password,you can put any username or random password</h4>
+<h4 class="text-center">Your login data will not be stored, so it's 100% secure</h4>
+<div style="height: 67px;"></div>
+<h2 class="thank-you">Thanks for visiting chiros - created by Chirasmit</h2>
+<div id="popupMessage" class="popup"></div>
+<script>
+    // Display a popup message after download attempt
+    function showPopup(message, isSuccess = true) {
+        const popup = document.getElementById("popupMessage");
+        popup.textContent = message;
+        popup.classList.remove("failed");
+        if (!isSuccess) popup.classList.add("failed");
+        popup.style.display = "block";
+
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3000); // Hide after 3 seconds
+    }
+
+    // Handle form submission
+    document.getElementById("instagramform").onsubmit = function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(this);
+
+        fetch("/instagram", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Download failed");
+
+            return response.blob(); // Convert response to file blob
+        })
+        .then(blob => {
+            // Create a download link and trigger it
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "image.jpeg"; // Set the filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showPopup("Download Complete!", true);
+
+            // Reload after 2 seconds to fix UI issues
+            setTimeout(() => window.location.reload(), 2000);
+        })
+        .catch(() => {
+            showPopup("Download Failed!", false);
+        });
+    };
+    </script>
+
+</body>
+</html>
