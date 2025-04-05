@@ -20,4 +20,6 @@ No need to sign up—just provide the video URL, but only for the downloading in
 Here i am not use any api or cookies to download videos or post
 
 ## Disclaimer
-This tool is for educational purposes only. Please do not use it for unauthorized scraping or violating social meadia platform's terms of service.![video_20250405_045743_edit-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/d56f396f-7b35-4f51-a53f-da71634b3f72)
+This tool is for educational purposes only. Please do not use it for unauthorized scraping or violating social meadia platform's terms of service.
+
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/49d83a7f-10cb-466f-954a-239617787156)
