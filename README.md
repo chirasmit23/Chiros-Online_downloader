@@ -16,6 +16,8 @@ No need to sign up—just provide the video URL, but only for the downloading in
 1. Copy the post URL.
 2. Paste the URL into the input box.
 3. Click the **Download** button and wait for your file to be processed.
+## Key point:
+Here i am not use any api or cookies to download videos or post
 
 ## Disclaimer
 This tool is for educational purposes only. Please do not use it for unauthorized scraping or violating social meadia platform's terms of service.![video_20250405_045743_edit-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/d56f396f-7b35-4f51-a53f-da71634b3f72)
